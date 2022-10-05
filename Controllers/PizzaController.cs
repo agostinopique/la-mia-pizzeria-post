@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using la_mia_pizzeria_static.Models;
 using System.Collections.Generic;
+using Microsoft.IdentityModel.Tokens;
 
 namespace la_mia_pizzeria_static.Controllers
 {
@@ -77,7 +78,13 @@ namespace la_mia_pizzeria_static.Controllers
                 return View("Create", pizza);
             }
 
-            return RedirectToAction("Index")
+            using (PizzeriaContext db = new PizzeriaContext())
+            {
+                db.Add(new Pizza(pizza.Name, pizza.Description, pizza.Picture, pizza.Price));
+                db.SaveChanges();
+            }
+            
+            return RedirectToAction("Index");
         }
     }
 }
