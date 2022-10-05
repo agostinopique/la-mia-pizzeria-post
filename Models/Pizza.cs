@@ -1,7 +1,12 @@
-﻿namespace la_mia_pizzeria_static.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace la_mia_pizzeria_static.Models
 {
+
+    [Table("Pizze")]
     public class Pizza
     {
+        
         public string Name { get; set; }
         public string Description { get; set; }
         public string Picture { get; set; }
