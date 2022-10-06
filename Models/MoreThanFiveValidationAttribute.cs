@@ -7,18 +7,17 @@ namespace la_mia_pizzeria_static.Models
     {
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            string data = (string)value;
-
-
-            if (data == null)
+            if(value == null)
             {
-                return new ValidationResult("La descrizione è obbligatoria!");
+                string data = (string)value;
 
+
+                if (data.Split(' ').Count() < 5)
+                {
+                    return new ValidationResult("La descrizione deve essere di almeno 5 parole");
+                }
             }
-            else if (data.Split(' ').Count() < 5)
-            {
-                return new ValidationResult("La descrizione deve essere di almeno 5 parole");
-            }
+            
 
             return ValidationResult.Success;
         }

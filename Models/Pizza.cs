@@ -14,7 +14,7 @@ namespace la_mia_pizzeria_static.Models
         [StringLength(25, ErrorMessage = "IL nome inserito è troppo lungo!")]
         public string Name { get; set; }
 
-        //[Required]
+        [Required(ErrorMessage = "La descrizione è obbligatoria!")]
         [StringLength(25, ErrorMessage = "La descrizione è troppo lunga!")]
         [MoreThanFiveValidation]
         public string Description { get; set; }
