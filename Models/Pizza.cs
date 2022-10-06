@@ -9,9 +9,20 @@ namespace la_mia_pizzeria_static.Models
     {
         [Key]
         public int Id { get; set; }
+
+        [Required]
+        [StringLength(25, ErrorMessage = "IL nome inserito è troppo lungo!")]
         public string Name { get; set; }
+
+        [Required]
+        [StringLength(25, ErrorMessage = "La descrizione è troppo lunga!")]
         public string Description { get; set; }
+
+        [Required]
         public string Picture { get; set; }
+
+        [Required]
+        [Range(1, 25, ErrorMessage = "Inserisci un prezzo valido (tra 1 e 25 euro)")]
         public string Price { get; set; }
 
 
@@ -19,7 +30,7 @@ namespace la_mia_pizzeria_static.Models
         {
 
         }
-       public Pizza(string name, string description, string picture, string price)
+        public Pizza(string name, string description, string picture, string price)
         {
             int id = 0;
             this.Id = id;
